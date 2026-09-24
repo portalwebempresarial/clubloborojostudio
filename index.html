@@ -1,1 +1,340 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Lobo Rojo Studio | Barbería</title>
+    <!-- Fuentes de Google para un aspecto fuerte y clásico -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Iconos para el botón de WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables de colores (Oscuro y Rojo) */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --red-brand: #d31010;
+            --red-hover: #b00d0d;
+        }
+
+        /* Reseteo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Utilidades */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-red { color: var(--red-brand); }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: var(--red-brand);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(211, 16, 16, 0.4);
+            text-transform: uppercase;
+        }
+
+        .btn-whatsapp i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--red-hover);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(211, 16, 16, 0.6);
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sección Servicios */
+        .services {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 10px;
+            border-bottom: 4px solid var(--red-brand);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--red-brand);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Sección Por qué elegirnos */
+        .benefits {
+            background-color: var(--card-bg);
+            padding: 80px 0;
+        }
+
+        .benefits-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .benefits-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .benefits-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .benefits-list li i {
+            color: var(--red-brand);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        /* Sección Final CTA & Footer */
+        .footer-cta {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .footer-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-cta p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background-color: #050505;
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        footer .socials {
+            margin-bottom: 15px;
+        }
+
+        footer .socials a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .socials a:hover {
+            color: var(--red-brand);
+        }
+
+        /* Animación para el botón final (latido) */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 16, 16, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(211, 16, 16, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 16, 16, 0); }
+        }
+
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; padding: 0 15px; }
+            .benefits-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <h3 class="text-red" style="margin-bottom: 15px; letter-spacing: 3px;">Club Lobo Rojo Studio</h3>
+            <h1>Descubre a tu mejor versión.<br>Únete a la <span class="text-red">Manada</span>.</h1>
+            <p>La barbería de primer nivel en el Centro Internacional de Bogotá. Cortes precisos, estilo impecable y una experiencia diseñada para ti.</p>
+            <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Reservar Ahora por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- SERVICIOS -->
+    <section class="services">
+        <div class="container">
+            <h2>El Menú de la <span class="text-red">Manada</span></h2>
+            <div class="grid-services">
+                <div class="card">
+                    <h3>Clásico</h3>
+                    <p>Corte y Barba tradicional. Cuidamos cada detalle para mantener tu estilo siempre limpio, definido y fresco.</p>
+                </div>
+                <div class="card">
+                    <h3>Premium</h3>
+                    <p><em>El Corte del Cazador.</em> Una experiencia superior con productos de alta calidad para un acabado perfecto y duradero.</p>
+                </div>
+                <div class="card">
+                    <h3>VIP</h3>
+                    <p>Atención exclusiva con nuestro servicio <em>Lobo Rojo VIP</em>. El máximo nivel de cuidado personal para el hombre exigente.</p>
+                </div>
+            </div>
+            <a href="https://wa.me/573208557761?text=Hola,%20quisiera%20conocer%20los%20precios%20de%20los%20servicios" class="btn-whatsapp" target="_blank" style="background-color: transparent; border: 2px solid var(--red-brand); color: var(--text-main); box-shadow: none;">
+                Consultar Precios en WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="benefits">
+        <div class="container benefits-content">
+            <div class="benefits-text">
+                <h2>Más que un corte,<br>una <span class="text-red">experiencia</span></h2>
+                <ul class="benefits-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Ubicación Ideal:</strong><br>
+                            Si vives o trabajas en el Centro Internacional, esta es tu barbería de confianza.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <strong>La Rifa del Lobo:</strong><br>
+                            Con cada servicio recibes una boleta gratis para participar por kits de productos profesionales (Valor comercial $80.000).
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-cut"></i>
+                        <div>
+                            <strong>Ambiente Clásico y Exclusivo:</strong><br>
+                            Sillas de barbero tradicionales, un ambiente relajado y profesionales listos para asesorarte.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2>¿Listo para renovar tu estilo?</h2>
+            <p>Agenda tu cita hoy mismo. No esperes a que te lo cuenten, vive la experiencia Lobo Rojo.</p>
+            <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp btn-pulse" target="_blank">
+                <i class="fab fa-whatsapp"></i> Agendar mi cita (320 855 7761)
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="socials">
+                <a href="https://www.instagram.com/clubloborojostudio/?hl=es" target="_blank" title="Instagram Lobo Rojo"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>📍 Centro Internacional, Bogotá, Colombia</p>
+            <br>
+            <p>&copy; 2026 Club Lobo Rojo Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
