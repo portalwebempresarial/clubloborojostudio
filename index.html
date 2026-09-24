@@ -58,6 +58,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(211, 16, 16, 0.4);
             text-transform: uppercase;
+            margin-top: 15px;
         }
 
         .btn-whatsapp i {
@@ -71,63 +72,73 @@
             box-shadow: 0 6px 20px rgba(211, 16, 16, 0.6);
         }
 
-        /* ----- SECCIÓN HERO (ACTUALIZADA CON VIDEO) ----- */
+        /* ----- SECCIÓN HERO (Fondo imagen + Recuadro Video) ----- */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            /* Aquí está el fondo de imagen oscuro que te gustó */
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 100px 0 50px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            overflow: hidden; /* Evita que el video se salga de los bordes */
-        }
-
-        /* Estilos del video de fondo */
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        /* Capa oscura sobre el video para que el texto se lea perfectamente */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 10, 10, 0.75); /* Ajusta el 0.75 para más o menos oscuridad */
-            z-index: 2;
-        }
-
-        /* El contenido del Hero debe estar por encima del video y la capa */
-        .hero .container {
-            position: relative;
-            z-index: 3;
+            gap: 40px;
         }
 
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 20px;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .hero p {
             font-size: 1.2rem;
             color: #dddddd;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Estilo del recuadro del video */
+        .video-box {
+            width: 100%;
+            max-width: 320px; /* Tamaño ideal para un Reel de IG */
+            border: 4px solid var(--red-brand);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            background-color: #000;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Diseño para computadoras (Texto a la izquierda, Video a la derecha) */
+        @media (min-width: 992px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                justify-content: space-between;
+            }
+            .hero-text {
+                flex: 1;
+                padding-right: 40px;
+            }
+            .hero p {
+                margin-left: 0;
+            }
+            .video-box {
+                flex: 0 0 320px; /* Mantiene el tamaño del video en PC */
+            }
         }
         /* ------------------------------------------------ */
 
@@ -273,24 +284,27 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
-        
-        <!-- VIDEO DE FONDO -->
-        <!-- NOTA: Descarga el video de tu Instagram y reemplaza el enlace de "src" de abajo por el nombre de tu archivo, ejemplo: src="video-lobo.mp4" -->
-        <video autoplay loop muted playsinline class="hero-video">
-            <source src="https://videos.pexels.com/video-files/3998058/3998058-uhd_2560_1440_30fps.mp4" type="video/mp4">
-        </video>
-        
-        <!-- Capa de sombra para leer las letras -->
-        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            
+            <!-- Texto Principal -->
+            <div class="hero-text">
+                <h3 class="text-red" style="margin-bottom: 15px; letter-spacing: 3px;">Club Lobo Rojo Studio</h3>
+                <h1>Descubre a tu mejor versión.<br>Únete a la <span class="text-red">Manada</span>.</h1>
+                <p>La barbería de primer nivel en el Centro Internacional de Bogotá. Cortes precisos, estilo impecable y una experiencia diseñada para ti.</p>
+                <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Reservar Ahora
+                </a>
+            </div>
 
-        <!-- Contenido principal encima del video -->
-        <div class="container">
-            <h3 class="text-red" style="margin-bottom: 15px; letter-spacing: 3px;">Club Lobo Rojo Studio</h3>
-            <h1>Descubre a tu mejor versión.<br>Únete a la <span class="text-red">Manada</span>.</h1>
-            <p>La barbería de primer nivel en el Centro Internacional de Bogotá. Cortes precisos, estilo impecable y una experiencia diseñada para ti.</p>
-            <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Reservar Ahora
-            </a>
+            <!-- Recuadro del Video -->
+            <div class="video-box">
+                <!-- Cambia el link de abajo por el archivo de tu video descargado (ej: src="video-ig.mp4") -->
+                <video autoplay loop muted playsinline>
+                    <source src="https://videos.pexels.com/video-files/5300098/5300098-uhd_1440_2560_25fps.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+
         </div>
     </header>
 
