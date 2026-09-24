@@ -12,7 +12,8 @@
     <style>
         :root {
             --bg-color: #0a0a0a;
-            --card-bg: #1a1a1a;
+            --bg-gradient: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            --card-bg: #151515;
             --text-main: #ffffff;
             --text-muted: #aaaaaa;
             --red-brand: #d31010;
@@ -72,13 +73,14 @@
             box-shadow: 0 6px 20px rgba(211, 16, 16, 0.6);
         }
 
-        /* ----- SECCIÓN HERO ----- */
+        /* ----- SECCIÓN HERO (Fondo limpio + Video en Recuadro) ----- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: var(--bg-gradient); /* Fondo oscuro sin imagen */
             padding: 100px 0 50px 0;
+            border-bottom: 2px solid #222;
         }
 
         .hero-content {
@@ -93,6 +95,7 @@
             font-size: 4rem;
             margin-bottom: 20px;
             letter-spacing: 2px;
+            line-height: 1.1;
         }
 
         .hero p {
@@ -104,27 +107,24 @@
             margin-right: auto;
         }
 
-        /* Estilo del recuadro del video incrustado de Instagram */
+        /* Recuadro del Video */
         .video-box {
             width: 100%;
             max-width: 320px; 
             border: 4px solid var(--red-brand);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            background-color: #ffffff; /* IG iframe necesita fondo claro o carga el suyo */
-            display: flex;
-            justify-content: center;
+            box-shadow: 0 15px 35px rgba(211, 16, 16, 0.2);
+            background-color: #000;
         }
 
-        .video-box iframe {
+        .video-box video {
             width: 100%;
-            height: 520px;
-            border: none;
-            overflow: hidden;
+            height: auto;
+            display: block;
+            border-radius: 11px;
         }
 
-        /* Diseño para computadoras */
         @media (min-width: 992px) {
             .hero-content {
                 flex-direction: row;
@@ -142,11 +142,12 @@
                 flex: 0 0 320px;
             }
         }
-        /* ------------------------------------------------ */
 
+        /* ----- SERVICIOS ----- */
         .services {
             padding: 80px 0;
             text-align: center;
+            background-color: var(--bg-color);
         }
 
         .services h2 {
@@ -184,6 +185,7 @@
             font-size: 1rem;
         }
 
+        /* ----- BENEFICIOS ----- */
         .benefits {
             background-color: var(--card-bg);
             padding: 80px 0;
@@ -224,10 +226,31 @@
             margin-top: 3px;
         }
 
+        /* ----- SECCIÓN FINAL: IMAGEN + CTA ----- */
         .footer-cta {
             padding: 80px 0;
             text-align: center;
             background-color: var(--bg-color);
+        }
+
+        .final-image-container {
+            max-width: 600px; /* Tamaño máximo para que no se vea desproporcionada */
+            margin: 0 auto 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 2px solid #333;
+        }
+
+        .final-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .final-image-container img:hover {
+            transform: scale(1.02);
         }
 
         .footer-cta h2 {
@@ -240,6 +263,7 @@
             margin-bottom: 40px;
         }
 
+        /* ----- FOOTER ----- */
         footer {
             background-color: #050505;
             padding: 30px 0;
@@ -288,7 +312,7 @@
     <header class="hero">
         <div class="container hero-content">
             
-            <!-- Texto Principal -->
+            <!-- TEXTO PRINCIPAL -->
             <div class="hero-text">
                 <h3 class="text-red" style="margin-bottom: 15px; letter-spacing: 3px;">Club Lobo Rojo Studio</h3>
                 <h1>Descubre a tu mejor versión.<br>Únete a la <span class="text-red">Manada</span>.</h1>
@@ -298,10 +322,13 @@
                 </a>
             </div>
 
-            <!-- Recuadro del Video de Instagram -->
+            <!-- RECUADRO DEL VIDEO REPRODUCIÉNDOSE -->
             <div class="video-box">
-                <!-- Se usa un Iframe apuntando a la versión /embed/ del Reel que solicitaste -->
-                <iframe src="https://www.instagram.com/reel/Dbb3VBvuUXd/embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                <!-- Llama a tu archivo 'reel.mp4' -->
+                <video autoplay loop muted playsinline>
+                    <source src="reel.mp4" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
             </div>
 
         </div>
@@ -326,7 +353,7 @@
                 </div>
             </div>
             <a href="https://wa.me/573208557761?text=Hola,%20quisiera%20conocer%20los%20precios%20de%20los%20servicios" class="btn-whatsapp" target="_blank" style="background-color: transparent; border: 2px solid var(--red-brand); color: var(--text-main); box-shadow: none;">
-                Consultar Precios en WhatsApp
+                Consultar Precios
             </a>
         </div>
     </section>
@@ -363,9 +390,16 @@
         </div>
     </section>
 
-    <!-- CTA FINAL -->
+    <!-- CTA FINAL CON IMAGEN POST1 -->
     <section class="footer-cta">
         <div class="container">
+            
+            <!-- Imagen mostrada al final -->
+            <div class="final-image-container">
+                <!-- Llama a tu archivo 'post1.jpg' -->
+                <img src="post1.jpg" alt="Club Lobo Rojo Studio">
+            </div>
+
             <h2>¿Listo para renovar tu estilo?</h2>
             <p>Agenda tu cita hoy mismo. No esperes a que te lo cuenten, vive la experiencia Lobo Rojo.</p>
             <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp btn-pulse" target="_blank">
