@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club Lobo Rojo Studio | Barbería</title>
-    <!-- Fuentes de Google para un aspecto fuerte y clásico -->
+    <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Iconos para el botón de WhatsApp -->
+    <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Variables de colores (Oscuro y Rojo) */
         :root {
             --bg-color: #0a0a0a;
             --card-bg: #1a1a1a;
@@ -21,7 +19,6 @@
             --red-hover: #b00d0d;
         }
 
-        /* Reseteo básico */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +38,6 @@
             text-transform: uppercase;
         }
 
-        /* Utilidades */
         .container {
             width: 90%;
             max-width: 1200px;
@@ -75,32 +71,66 @@
             box-shadow: 0 6px 20px rgba(211, 16, 16, 0.6);
         }
 
-        /* Sección Hero */
+        /* ----- SECCIÓN HERO (ACTUALIZADA CON VIDEO) ----- */
         .hero {
+            position: relative;
             height: 100vh;
             min-height: 600px;
             display: flex;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            overflow: hidden; /* Evita que el video se salga de los bordes */
+        }
+
+        /* Estilos del video de fondo */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Capa oscura sobre el video para que el texto se lea perfectamente */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.75); /* Ajusta el 0.75 para más o menos oscuridad */
+            z-index: 2;
+        }
+
+        /* El contenido del Hero debe estar por encima del video y la capa */
+        .hero .container {
+            position: relative;
+            z-index: 3;
         }
 
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 20px;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-muted);
+            color: #dddddd;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
+        /* ------------------------------------------------ */
 
-        /* Sección Servicios */
         .services {
             padding: 80px 0;
             text-align: center;
@@ -141,7 +171,6 @@
             font-size: 1rem;
         }
 
-        /* Sección Por qué elegirnos */
         .benefits {
             background-color: var(--card-bg);
             padding: 80px 0;
@@ -182,7 +211,6 @@
             margin-top: 3px;
         }
 
-        /* Sección Final CTA & Footer */
         .footer-cta {
             padding: 80px 0;
             text-align: center;
@@ -224,7 +252,6 @@
             color: var(--red-brand);
         }
 
-        /* Animación para el botón final (latido) */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 16, 16, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(211, 16, 16, 0); }
@@ -235,7 +262,6 @@
             animation: pulse 2s infinite;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1rem; padding: 0 15px; }
@@ -247,12 +273,23 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
+        
+        <!-- VIDEO DE FONDO -->
+        <!-- NOTA: Descarga el video de tu Instagram y reemplaza el enlace de "src" de abajo por el nombre de tu archivo, ejemplo: src="video-lobo.mp4" -->
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="https://videos.pexels.com/video-files/3998058/3998058-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Capa de sombra para leer las letras -->
+        <div class="hero-overlay"></div>
+
+        <!-- Contenido principal encima del video -->
         <div class="container">
             <h3 class="text-red" style="margin-bottom: 15px; letter-spacing: 3px;">Club Lobo Rojo Studio</h3>
             <h1>Descubre a tu mejor versión.<br>Únete a la <span class="text-red">Manada</span>.</h1>
             <p>La barbería de primer nivel en el Centro Internacional de Bogotá. Cortes precisos, estilo impecable y una experiencia diseñada para ti.</p>
             <a href="https://wa.me/573208557761?text=Hola,%20quiero%20agendar%20una%20cita%20en%20Lobo%20Rojo" class="btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Reservar Ahora por WhatsApp
+                <i class="fab fa-whatsapp"></i> Reservar Ahora
             </a>
         </div>
     </header>
