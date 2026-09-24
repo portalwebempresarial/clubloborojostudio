@@ -72,12 +72,11 @@
             box-shadow: 0 6px 20px rgba(211, 16, 16, 0.6);
         }
 
-        /* ----- SECCIÓN HERO (¡Regresó el fondo que te gustó!) ----- */
+        /* ----- SECCIÓN HERO (Con el fondo oscuro elegante) ----- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Aquí está la imagen de fondo con el filtro oscuro */
             background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             padding: 100px 0 50px 0;
             border-bottom: 2px solid #222;
@@ -324,8 +323,8 @@
 
             <!-- RECUADRO DEL VIDEO REPRODUCIÉNDOSE -->
             <div class="video-box">
-                <!-- ASEGÚRATE de que tu archivo se llama exactamente reel.mp4 -->
-                <video autoplay loop muted playsinline>
+                <!-- Se agregó 'controls' por seguridad, para que siempre puedas reproducirlo -->
+                <video autoplay loop muted playsinline controls>
                     <source src="reel.mp4" type="video/mp4">
                     Tu navegador no soporta el video.
                 </video>
@@ -396,8 +395,7 @@
             
             <!-- Imagen mostrada al final -->
             <div class="final-image-container">
-                <!-- ASEGÚRATE de que tu imagen se llame post1.png o post1.jpg -->
-                <img src="post1.png" alt="Club Lobo Rojo Studio">
+                <img src="post1.jpeg" alt="Club Lobo Rojo Studio">
             </div>
 
             <h2>¿Listo para renovar tu estilo?</h2>
